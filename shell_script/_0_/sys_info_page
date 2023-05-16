@@ -29,12 +29,22 @@ report_disk_space () {
 }
 
 report_home_space () {
-	cat <<- _EOF_
+	if [[ $(id -u) == 0 ]]; then
+		cat <<- _EOF_
 
-		<h2>home Space Utitilization</h2>
-		<pre>$(du -sh /home/*)</pre>
+			<h2>Home Space Utitilization (All users)</h2>
+			<pre>$(du -sh /home/*)</pre>
 
-		_EOF_
+			_EOF_
+	else
+
+		cat <<- _EOF_
+	
+			<h2>Home Space Utitilization($USER)</h2>
+			<pre>$(du -sh /home/*)</pre>
+
+			_EOF_
+	fi
 	return
 }
 
