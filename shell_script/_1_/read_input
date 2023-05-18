@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# read-integer: evalute the value of an integer
+
+echo -n "Enter an integer -> "
+read int
+
+if [[ "$int" =~ ^-?[0-9]+$ ]]; then
+	if [ "$int" -eq 0 ]; then
+		echo "$int is zero"
+	
+	else
+		if [ "$int" -gt 0 ]; then
+			echo "$int is positive"
+		else
+			echo "$int is negative"
+		fi
+
+		if [ $((int % 2)) -ne 0 ]; then
+			echo "$int is odd"
+		else
+			echo "$int is even"
+		fi
+	
+	fi
+else
+	echo "Input value is not an integer." >&2
+	exit 1
+fi
