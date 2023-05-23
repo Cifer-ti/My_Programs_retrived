@@ -1,0 +1,1 @@
+The run length encodiing algorithm for file compression.
