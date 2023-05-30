@@ -12,12 +12,13 @@ if [ -n "$file_info" ]; then
 	IFS=":" read user pw uid gid name home shell <<< "$file_info"
 	
 	cat <<- _EOF_ 
-		User =		'$user'"
-		UID =		'$uid'"
-		GID =		'$gid'"
-		Full Name =	'$name'"
-		HOme Dir = 	'$home'"
-		Shell =		'$shell'"
+
+		User =		'$user'
+		UID =		'$uid'
+		GID =		'$gid'
+		Full Name =	'$name'
+		HOme Dir = 	'$home'
+		Shell =		'$shell'
 
 	_EOF_
 
