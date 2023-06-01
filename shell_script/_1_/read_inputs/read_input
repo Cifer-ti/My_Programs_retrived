@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# read-integer: evalute the value of an integer
+# read-integer: evalute the value of an integer.
 
 echo -n "Enter an integer -> "
 read int
