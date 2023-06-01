@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#read-ifs: read fields from a file
+#read-ifs: read fields from a file.
 
 FILE=/etc/passwd
 
