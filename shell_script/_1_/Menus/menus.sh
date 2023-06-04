@@ -23,7 +23,7 @@ cat <<- _EOF_
 		fi
 		
 		if [[ $REPLY == 1 ]]; then
-			echo "-----DEsplaying System information------"
+			echo "-----Displaying System information------"
 			echo "Hostname: $HOSTNAME"
 			uptime
 			exit
@@ -37,12 +37,13 @@ cat <<- _EOF_
 
 		if [[ $REPLY == 3 ]]; then
 			echo "-------Displaying Home Space Utilization-----"
+
 			if [[ $(id -u) -eq 0 ]]; then
 				echo "Home space Utilization (All Users)"
 				du -sh /home/*
 			else
 				echo "Home Space Utilization ($USERS)"
-				du -hs $HOME
+				du -sh $HOME
 			fi
 			exit
 		fi
