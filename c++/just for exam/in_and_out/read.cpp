@@ -11,4 +11,14 @@ int main ()
 	int quantity = 0;
 
 	cout << "Enter price: ";
-	getline`
+	getline (cin, astr);
+	stringstream(astr) >> price;
+
+	cout << "What's the quantity ? ";
+	getline (cin, astr);
+	stringstream(astr) >> quantity;
+
+	cout << "Total price: " << price * quantity << endl;
+
+	return 0;
+}
