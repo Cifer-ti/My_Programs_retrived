@@ -3,6 +3,8 @@
 #pos-par: script to view command line parameters
 
 echo "
+number of arguments provided = $#
+
 \$0 = $0
 \$1 = $1
 \$2 = $2
