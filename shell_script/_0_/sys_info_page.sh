@@ -131,6 +131,10 @@ if [[ -n $interactive ]]; then
 					;;
 
 			esac
+
+		else
+			break
+
 		fi
 	done
 fi
