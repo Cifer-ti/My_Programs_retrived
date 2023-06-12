@@ -6,6 +6,8 @@ The scripts accepts command line arguments, to determine the file into which the
 
 if no arguement is provided, the program places it's output on the command line.
 
-use
+USE
 
-programname -f filename, filename specifies the name of the of the output file.
+To see how to use this script use the help option. Type
+
+programname --help or programname -h
