@@ -83,6 +83,8 @@ write_html_page () {
 	return
 }
 
+#End of function definition
+
 # process command line options
 
 interactive=
