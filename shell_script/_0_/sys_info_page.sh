@@ -54,11 +54,31 @@ report_home_space () {
 	return
 }
 
+#displays the help for this script
 usage () {
-	echo "$PROGNAME: usage: $PROGNAME [-f filename | -i]]"
+	cat <<- _EOF_
+
+		Usage: $PROGNAME [option]... [filename]
+		displays system information of a computer in html format
+
+		-h, --help		display this help
+
+		-f, --filename		provide name of a file into which the output 
+					should be written. Should be followed by filename.
+
+		-i, --interactive	Prompts to enter filename into which output should be 
+					written. Then checks if filename exists if it does,
+					asks to overite it's content.
+
+		Note: If no arguement is provided, will display output on standard output stream.
+		      If a non valid arguement is provided displays this help.
+
+		_EOF_
+
 	return
 }
 
+#produces output of system information in html format
 write_html_page () {
 	cat <<- _EOF_
 	
@@ -79,6 +99,7 @@ write_html_page () {
 		</body>
 
 	<html>
+
 	_EOF_
 	return
 }
@@ -146,7 +167,6 @@ fi
 if [[ -n $filename ]]; then
 	if touch $filename && [[ -f $filename ]]; then
 		write_html_page > $filename
-
 	else
 		echo "$PRGNAME: cannot write file '$filename'" >&2
 		exit 1
