@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>lets</title>
+  </head>
+
+  <body>
+    <input id="todo-title" type="text" placeholder="add">
+    <input id="date-picker" type="date">
+
+    <button onclick="addTodo()">add todo</button>
+    <div id="todo-list"></div>
+    
+    <script>
+      let todos = [{
+        title: 'Get grocceries',
+        duedate: '2021-10-04'},
+        { title: 'Wash car',
+        duedate: '2021-02-03' },
+        { title: 'Make dinner',
+        duedate: '2021-03-04'}];
+
+      render();
+        
+        function addTodo() { 
+          let title = document.getElementById('todo-title').value;
+
+          const datepicker = document.getElementById('date-picker');
+          const duedate = datepicker.value
+          todos.push({
+            title: title,
+            duedate: duedate });
+
+            render();
+        }
+
+        function render(){
+          document.getElementById('todo-list').innerHTML = '';
+
+          todos.forEach(function(todo) {
+          const me = document.createElement('div');
+          me.innerText = todo.title + ' ' + todo.duedate;
+
+          const deletebutton = document.createElement('button');
+          deletebutton.innerText = 'Delete';
+          me.appendChild(deletebutton);
+          deletebutton.onclick = tododelet();
+
+          deletebutton.style= 'margin-left: 12px'
+          const todoList = document.getElementById('todo-list');
+          todoList.appendChild(me);
+          });
+        }
+        
+    </script>
+  </body>
+</html>
