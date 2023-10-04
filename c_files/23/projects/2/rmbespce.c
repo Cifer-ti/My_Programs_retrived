@@ -1,3 +1,6 @@
+/* Copies a file from stdin to stdout removing all white-space charaters
+   at the begining of the line
+*/
 #include <ctype.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -17,7 +20,7 @@ int main(void)
 			putchar(ch);
 		}
 
-		else if ((ch = getchar()) == '\n')
+		else if (ch == '\n')
 			start_copying = false;
 	}
 

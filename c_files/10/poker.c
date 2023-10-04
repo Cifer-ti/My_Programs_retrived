@@ -64,7 +64,7 @@ void read_cards(void) {
             case '4':           rank = 2; break;
             case '5':           rank = 3; break;
             case '6':           rank = 4; break;
-            case '7':      card_seen[rank][suit] =     rank = 5; break;
+            case '7':           rank = 5; break;
             case '8':           rank = 6; break;
             case '9':           rank = 7; break;
             case 't': case 'T': rank = 8; break;
