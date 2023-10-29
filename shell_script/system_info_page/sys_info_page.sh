@@ -176,3 +176,19 @@ if [[ -n $filename ]]; then
 else
 	write_html_page
 fi
+
+choice=
+
+read -p "Open report page on default browser >"
+
+if[[ -n $choice ]]; then
+	case $choce in
+		Y | y)	$(xdg-open) $filename
+				break
+				;;
+
+		*)		exit
+				;;
+
+		esac
+fi
