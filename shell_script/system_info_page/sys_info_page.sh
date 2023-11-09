@@ -179,15 +179,15 @@ fi
 
 choice=
 
-read -p "Open report page on default browser >"
+read -p "Open report page on default browser > " choice
 
-if[[ -n $choice ]]; then
-	case $choce in
-		Y | y)	$(xdg-open) $filename
+if [[ -n $choice ]]; then
+	case $choice in
+		Y | y)	$(xdg-open $filename)
 				break
 				;;
 
-		*)		exit
+		*)      exit
 				;;
 
 		esac
