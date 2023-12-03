@@ -21,6 +21,8 @@ int main(int argc, char **argv)
 		{0, 'd', 0, 0, "Show a dot on the screen"},
 		{0}
 	};
+
 	struct argp argp = {options, parse_opt};
+	
 	return argp_parse(&argp, argc, argv, 0, 0, 0);
 }

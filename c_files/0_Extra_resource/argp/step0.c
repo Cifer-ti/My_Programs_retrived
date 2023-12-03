@@ -1,3 +1,4 @@
+/* The simplest Argp-enabled program */
 #include <argp.h>
 #include <stdio.h>
 
