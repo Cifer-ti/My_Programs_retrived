@@ -10,8 +10,9 @@ static int parse_opt(int key, char *arg, struct argp_state *state)
             unsigned int i;
 
             for(i = 0; i < atoi(arg); i++)
-                printf(".\n");
-                break;
+                printf(".");
+            printf("\n");
+            break;
     }
     return 0;
 }
