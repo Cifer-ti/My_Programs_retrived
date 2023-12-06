@@ -1,4 +1,4 @@
-/* An arpg enabled program, with a long option that has an optional argument */
+/* An argp enabled program, with a long option that has an optional argument */
 #include <argp.h>
 #include <stdio.h>
 #include <stdlib.h>
