@@ -40,7 +40,7 @@ int main(int argc, char **argv)
     struct argp_option options[] =
     {
         {"dot", 'd', "NUM", OPTION_ARG_OPTIONAL, "show some dots on the screen"},
-        {"period", 0, "NOT IMPORTANT", OPTION_ALIAS, "NOT IMPORTANT"},
+        {"ellipsis", 777, 0, 0, "show ellipsis on the screen"},
         {0}
     };
 
