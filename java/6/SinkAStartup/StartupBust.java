@@ -36,7 +36,7 @@ public class StartupBust {
 
 	private void StartPlaying() {
 		while(!startups.isEmpty()) {
-			String userGuess = helper.getUserInput("Enter a guess: ");
+			String userGuess = helper.getUserInput("Enter a guess ");
 			checkUserGuess(userGuess);
 		}
 		finishGame();
