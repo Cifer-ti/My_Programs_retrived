@@ -1,4 +1,4 @@
-package Jukebox3;
+package Jukebox4;
 
 class SongV3 implements Comparable<SongV3> {
 	private String title;
@@ -28,7 +28,7 @@ class SongV3 implements Comparable<SongV3> {
 	}
 
 	public String toString() {
-		return artist;
+		return title;
 	}
 
 }
