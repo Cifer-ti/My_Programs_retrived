@@ -1,4 +1,4 @@
-package Jukebox3;
+package Jukebox6;
 
 class SongV3 implements Comparable<SongV3> {
 	private String title;
@@ -9,7 +9,7 @@ class SongV3 implements Comparable<SongV3> {
 		return title.compareTo(s.getTitle());
 	}
 
-	SongV3(String title, String artist, int bpm) {
+	SongV3(String title, String artist,int bpm) {
 		this.title = title;
 		this.artist = artist;
 		this.bpm = bpm;
@@ -30,5 +30,4 @@ class SongV3 implements Comparable<SongV3> {
 	public String toString() {
 		return title;
 	}
-
 }
