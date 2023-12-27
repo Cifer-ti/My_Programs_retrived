@@ -1,0 +1,44 @@
+package Jukebox9;
+
+class SongV4 implements Comparable<SongV4> {
+	private String title;
+	private String artist;
+	private int bpm;
+
+	// overrde equals() method of Object class
+	public boolean equals(Object aSong) {
+		SongV4 other = (SongV4) aSong;
+		return title.equals(other.title);
+	}
+
+	// overrde hashCode() method of object class
+	public int hashCode() {
+		return title.hashCode();
+	}
+
+	public int compareTo(SongV4 s) {
+		return title.compareTo(s.getTitle());
+	}
+
+	SongV4(String title, String artist, int bpm) {
+		this.title = title;
+		this.artist = artist;
+		this.bpm = bpm;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public String geArtist() {
+		return artist;
+	}
+
+	public int bpm() {
+		return bpm;
+	}
+
+	public String toString() {
+		return title;
+	}
+}
