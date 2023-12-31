@@ -1,2 +1,7 @@
 #ignore java class files
 *.class
+
+#ignore intelliJ IDEA config files
+*.xml
+.idea
+.out
