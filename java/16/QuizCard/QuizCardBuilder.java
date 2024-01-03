@@ -50,7 +50,7 @@ public class QuizCardBuilder {
 
 		frame.getContentPane().add(BorderLayout.CENTER, mainPanel);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(500, 600);
+		frame.setSize(600, 500);
 		frame.setVisible(true);
 
 	}
