@@ -1,15 +1,29 @@
 import javax.sound.midi.*;
 import javax.swing.*;
 import java.awt.*;
+import java.io.*;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import static javax.sound.midi.ShortMessage.*;
 
 public class BeatBox {
   private ArrayList<JCheckBox> checkboxList;
+	private JFrame frame;
   private Sequencer sequencer;
   private Sequence sequence;
   private Track track;
+	private File file;
+	private boolean[] checkboxState;
 
   String[] instrumentNames = {"Bass Drum", "Closed Hi-Hat",
           "Open Hi-Hat", "Acoustic Snare", "Crash Cymbal", "Hand Clap",
@@ -23,7 +37,7 @@ public class BeatBox {
   }
 
   public void buildGUI() {
-    JFrame frame = new JFrame("Cyber BeatBox");
+    frame = new JFrame("Cyber BeatBox");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     BorderLayout layout = new BorderLayout();
     JPanel background = new JPanel(layout);
@@ -46,6 +60,14 @@ public class BeatBox {
     JButton downTempoButton = new JButton("Tempo Down");
     downTempoButton.addActionListener(e -> changeTempo(0.97f));
     buttonBox.add(downTempoButton);
+
+		JButton saveButton = new JButton("serializeit");
+		saveButton.addActionListener(e -> writefile());
+		buttonBox.add(saveButton);
+
+		JButton restoreButton = new JButton("restore");
+		restoreButton.addActionListener(e -> readFile());
+		buttonBox.add(restoreButton);
 
     Box nameBox = new Box(BoxLayout.Y_AXIS);
     for (String instrumentName : instrumentNames) {
@@ -154,5 +176,50 @@ public class BeatBox {
     return event;
   }
 
+	private void writefile() {
+
+		checkboxState = new boolean[256];
+
+		for(int i = 0; i < 256; i++) {
+			JCheckBox check = checkboxList.get(i);
+			if(check.isSelected()) {
+				checkboxState[i] = true;
+			}
+		}
+
+		JFileChooser fileSave = new JFileChooser();
+		fileSave.showSaveDialog(frame);
+		file = fileSave.getSelectedFile();
+		
+		try(ObjectOutputStream os =
+				new ObjectOutputStream(new FileOutputStream(file))) {
+			os.writeObject(checkboxState);
+				} catch(IOException e) {
+					e.printStackTrace();
+				}
+	}
+
+	private void readFile() {
+		checkboxState = new boolean[256];
+		
+		JFileChooser fileOpen = new JFileChooser();
+		fileOpen.showOpenDialog(frame);
+		file = fileOpen.getSelectedFile();
+
+		try (ObjectInputStream is = 
+				new ObjectInputStream(new FileInputStream(file))) {
+			checkboxState = (boolean[]) is.readObject();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+
+		for(int i = 0; i < 256; i++) {
+			JCheckBox check = checkboxList.get(i);
+			check.setSelected(checkboxState[i]);
+		}
+
+		sequencer.stop();
+		buildTrackAndStart();
+	}
 }
  
