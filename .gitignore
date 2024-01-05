@@ -5,3 +5,6 @@
 *.xml
 .idea
 .out
+
+#ignore custom file containing serialized data for java programs.
+*.ser
