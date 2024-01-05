@@ -1,4 +1,4 @@
-package QuizCardPlayer;
+package QuizCard.QuizCardPlayer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,6 +30,7 @@ public class QuizCardPlayer {
 		display = new JTextArea(10, 20);
 		display.setFont(bigFont);
 		display.setLineWrap(true);
+		display.setWrapStyleWord(true);
 		display.setEditable(false);
 
 		JScrollPane scroller = new JScrollPane(display);
@@ -51,7 +52,7 @@ public class QuizCardPlayer {
 
 		frame.getContentPane().add(BorderLayout.CENTER, mainPanel);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(500, 400);
+		frame.setSize(600, 500);
 		frame.setVisible(true);
 
 	}

@@ -1,4 +1,4 @@
-package QuizCard;
+package QuizCard.QuizCardBuilder;
 
 import javax.management.QueryExp;
 

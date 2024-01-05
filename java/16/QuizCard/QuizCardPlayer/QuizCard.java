@@ -1,4 +1,4 @@
-package QuizCardPlayer;
+package QuizCard.QuizCardPlayer;
 
 import javax.management.QueryExp;
 
