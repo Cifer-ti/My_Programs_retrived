@@ -85,6 +85,10 @@ public class BeatBoxFinal {
     sendIt.addActionListener(e -> sendMessageAndTracks());
     buttonBox.add(sendIt);
 
+		JButton clearButton = new JButton("Clear");
+		clearButton.addActionListener(e -> clearBeatPattern());
+		buttonBox.add(clearButton);
+
     userMessage = new JTextArea();
     userMessage.setLineWrap(true);
     userMessage.setWrapStyleWord(true);
@@ -195,6 +199,13 @@ public class BeatBoxFinal {
 		userMessage.setText("");
 	}
 
+	private void clearBeatPattern() {
+		sequencer.stop();
+
+		for(JCheckBox checkBox : checkboxList) {
+			checkBox.setSelected(false);
+		}
+	}
 
 public class MyListSelectionListener implements ListSelectionListener {
     public void valueChanged(ListSelectionEvent lse) {
