@@ -23,7 +23,7 @@ public class PickALongest {
                     .reduce((name1, name2) ->
                             name1.length() >= name2.length() ? name1 : name2);
     aLongName.ifPresent(name ->
-            System.out.println(String.format("The longest name: %s", name)));
+            System.out.println(String.format("Thej longest name: %s", name)));
     System.out.println("//" + "END:REDUCE_OUTPUT");
 
     final String steveOrLonger =
