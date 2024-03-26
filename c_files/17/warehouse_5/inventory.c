@@ -21,6 +21,7 @@ void search(void);
 void update(void);
 void print(void);
 void erase(void);
+void printReverse(struct part *in);
 
 
  /*   
@@ -49,6 +50,9 @@ int main(void) {
             case 'e':
                 erase(); break;
             case 'q': return 0;
+
+            case 'r':
+                printReverse(inventory);
 
             default: 
                 printf("invalid code\n");
@@ -183,6 +187,17 @@ void print(void) {
         printf("%7d      %-25s%11d\n", p->number, p->name,
                                       p->on_hand); 
     }
+}
+
+void printReverse(struct part *in)
+{
+
+    if(in == NULL)
+        return;
+
+    printReverse(in->next);
+
+    printf("%s ", in->name);
 }
 
 /**
