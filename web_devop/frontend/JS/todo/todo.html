@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Some Todo</title>
+    </head>
+
+    <body>
+        
+        <div>
+            <label for="adding-todo">Todo title</label>
+            <input type="text" name="todo title" id="adding-todo" autofocus>
+        </div>
+
+        <div>
+            <label for="due-date">Date</label>
+            <input type="date" name="Todo-date" id="due-date">
+        </div>
+         
+        <button onclick="addTodo()">Add Todo</button> 
+
+        <div id="todo-list"></div>
+        <script>
+            // Model
+            /*
+             * if localstorage has a todos array, then use it
+             * otherwise use the default array.
+             */
+
+            let todos;
+
+            // Retrieve localStorage
+            const savedTodos = JSON.parse(localStorage.getItem('todos'));
+
+            // check if data retrieved is an array
+            if(Array.isArray(savedTodos)) {
+                todos = savedTodos;
+            } else {
+                todos = [{
+                    id: 'id0',
+                    title: 'Get groceries',
+                    dueDate: '04-10-2021'
+                }, {
+                    id: 'id1',
+                    title: 'Wash car',
+                    dueDate: '02-08-1943'
+                }, {
+                    id: 'id2',
+                    title: 'Don\'t die yet',
+                    dueDate: '07-05-1818'
+                }];
+
+                todos.push({
+                    id: 'id3',
+                    title: 'Live',
+                    dueDate: '31-12-5050'
+                });
+                
+            }
+
+            // create a todo
+            function createTodo(title, dueDate) {
+                const id = '' + new Date().getTime();
+                todos.push({
+                    id: id,
+                    title: title,
+                    dueDate: dueDate
+                });
+            }
+
+            function removeTodo(idToDelete) {
+                todos = todos.filter(function (todo) {
+                    if(todo.id === idToDelete) {
+                        return false;
+                    }
+                    return true;
+                });
+            }
+
+            function saveTodos() {
+                localStorage.setItem('todos', JSON.stringify(todos));
+            }
+            
+            render();
+
+            // Controller
+            function addTodo() {
+                let textbox = document.getElementById('adding-todo');
+                const title = textbox.value;
+
+                const datePicker = document.getElementById('due-date');
+                const dueDate = datePicker.value;
+
+                createTodo(title, dueDate);
+
+                render();
+            }
+
+            function deleteTodo(event) {
+                const deleteButton = event.target;
+                const idToDelete = deleteButton.id;
+
+                removeTodo(idToDelete);
+
+                render();
+            }
+
+            // View
+            function render() {
+                document.getElementById('todo-list').innerHTML = '';
+
+                todos.forEach(function (todo) {
+                const element = document.createElement('div');
+                element.innerText = todo.title + '  ' + todo.dueDate;
+
+                const deleteButton = document.createElement('button');
+                deleteButton.innerText = 'Delete';
+                deleteButton.style = 'margin-left: 15px;';
+                deleteButton.onclick = deleteTodo;
+                deleteButton.id = todo.id;
+                element.appendChild(deleteButton);
+
+                let todoList = document.getElementById('todo-list');
+                todoList.appendChild(element);
+            });
+            }
+        </script>
+
+        <div>
+            <button onclick="saveTodos()">Save Todo List</button>
+            <button>Clear Todo list</button>
+        </div>
+    </body>
+</html> 
