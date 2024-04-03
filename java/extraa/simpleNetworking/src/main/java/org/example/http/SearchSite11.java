@@ -16,7 +16,7 @@ public class SearchSite11 {
 
   public static void main(String[] args) throws IOException, InterruptedException, URISyntaxException {
     var client = HttpClient.newBuilder().build(); // create client object that would send the request
-    var url = new URI("https://www.oreilly.com"); // create the url
+    var url = new URI("https://www.oreilly.com"); // create the url object
     var request = HttpRequest.newBuilder(url).build(); // create response object parsing it the url needed
 
     // send the request from client object with, and store it's response
@@ -26,7 +26,7 @@ public class SearchSite11 {
 
     // extract the body of the respnse
     var body = response.body();
-    // write it to index.html file at the root of the working space dir
+    // write it to index.html file at the root of the working space
     FileManager.writeTofile("index.html", body);
   }
 }
