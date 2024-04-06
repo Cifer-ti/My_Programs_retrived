@@ -1,4 +1,4 @@
-package org.example.helloscenebuilder4.controller;
+package org.example.helloscenebuilder4;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,7 +10,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Objects;
 
 public class Scene1Controller {
   @FXML
@@ -19,16 +18,18 @@ public class Scene1Controller {
   private Scene scene;
   private Parent root;
 
+
+
   public void login(ActionEvent event) throws IOException {
 
     String username = nameTextField.getText();
 
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("Scene2.fxml"));
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("scene2.fxml"));
     root = loader.load();
 
     Scene2Controller scene2Controller = loader.getController();
     scene2Controller.displayName(username);
-    
+
     stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
     scene = new Scene(root);
     stage.setScene(scene);

@@ -1,4 +1,4 @@
-package org.example.helloscenebuilder4.controller;
+package org.example.helloscenebuilder4;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
