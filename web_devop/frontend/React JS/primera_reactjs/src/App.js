@@ -1,47 +1,27 @@
 import './App.css';
+import { useState, useEffect } from 'react';
 
 const App = () => {
-  const name = 'Yo destenir';
-  const isNameShowing = false;
-  const isFemale = false;
+  const [counter, setCounter] = useState(0);
 
-  const Person = (props) => {
-    return (
-      <>
-        <h1>Name: {props.name}</h1>
-        <h2>Last Name: {props.lastName}</h2>
-        <h2>Age: not {props.age}</h2>
-      </>
-    )
-  }
-
+  useEffect(() => {
+    setCounter(100);
+  }, []);
 
   return (
     <div className="App">
-     <h1>{isNameShowing ? name : 'Mi variable de nombre es falsa'}, 
-     No se cuanto de humano todavia soy</h1>
-
-     <Person 
-     name={'Kuro'}
-     lastName="Cifer"
-     age="Not defined"
-     />
-
-    <Person 
-     name="Loyd"
-     lastName="Viska"
-     age="Not defined"
-     />
-
-     {isFemale ? (
-      <>
-        fria
-      </>
-     ): (
-      <h1>frio</h1>
-     )}
+     <button onClick={() => setCounter((prevCount) => prevCount - 1)}>-</button>
+     <h1>{counter}</h1>
+     <button onClick={() => setCounter((prevCount) => prevCount + 1)}>+</button>
     </div>
   );
 }
 
 export default App;
+
+// when something is called as a funciton and it's name starts with hook,
+// in react it is called a function
+
+// A call back function is one without a name, and it's just waiting for some
+// command to be executed.
+
