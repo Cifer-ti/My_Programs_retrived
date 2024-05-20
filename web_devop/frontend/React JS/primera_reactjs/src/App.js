@@ -1,23 +1,45 @@
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+const App = () => {
+  const name = 'Yo destenir';
+  const isNameShowing = false;
+  const isFemale = false;
+
+  const Person = (props) => {
+    return (
+      <>
+        <h1>Name: {props.name}</h1>
+        <h2>Last Name: {props.lastName}</h2>
+        <h2>Age: not {props.age}</h2>
+      </>
+    )
+  }
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <h1>{isNameShowing ? name : 'Mi variable de nombre es falsa'}, 
+     No se cuanto de humano todavia soy</h1>
+
+     <Person 
+     name={'Kuro'}
+     lastName="Cifer"
+     age="Not defined"
+     />
+
+    <Person 
+     name="Loyd"
+     lastName="Viska"
+     age="Not defined"
+     />
+
+     {isFemale ? (
+      <>
+        fria
+      </>
+     ): (
+      <h1>frio</h1>
+     )}
     </div>
   );
 }
